@@ -146,10 +146,18 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  create )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  create )
+    _arguments \
+      ': :->guestname' \
+      '--ostemplate[template to be used]:template:_templates' \
+      '--vmtype[Display only virtual environments of the specified type.]:type:(ct vm)' \
+      {-o,--ostype}'[optimize it for use with the operating system (OS) family specified]:ostype:_ostype_list' \
+      {-d,--distribution}'[optimize it for use with the distribution specified]:distribution:_distribution_list' \
+      '--uuid[manually specify the UUID to use.]' \
+      '--changesid[assign the new Windows-based virtual machine a new Windows security identifier (SID).]' \
+      '--dst[path to the directory where the newly created virtual environment will be stored]:dir:_directories' \
+      '--no-hdd[create virtual environment without hard disk drives.]'
+  ;;
 
   delete )
     _arguments \
