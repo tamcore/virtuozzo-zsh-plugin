@@ -274,13 +274,13 @@ case "$words[1]" in
       :guest:_guests \
       {-d,--dump,-s,--send}'[dump output to stdout (-s) or send to Virtuozzo Development Team (-s)]' \
       '--proxy[proxy to use]' \
-      '--no-proxy:dont use proxy'
+      '--no-proxy:[dont use proxy]'
   ;;
 
   statistics )
     _arguments \
       :guest:_guests \
-      '--loop:Print statistics every second until the program is terminated.'
+      '--loop:[Print statistics every second until the program is terminated.]'
   ;;
 
 #  set )
