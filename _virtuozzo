@@ -349,6 +349,7 @@ case "$words[1]" in
         '--device-connect[]' \
         '--device-disconnect[]' \
         '--device-bootorder[]' \
+        '--image[]:file:_files' \
         '--offline-management[]:type:(on off)' \
         '--hostname[]' \
         '--nameserver[]' \
