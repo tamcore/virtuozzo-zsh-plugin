@@ -43,6 +43,13 @@ _1st_arguments=(
   'set'
 )
 
+_guests() {
+  while read -r guest
+  do
+    _wanted 'guest' expl 'guest' compadd $guest
+  done <<< "$( prlctl list --all --no-header -o name 2>/dev/null )"
+}
+
 _arguments '*:: :->subcmds' && return 0
 
 if (( CURRENT == 1 )); then
@@ -64,4 +71,184 @@ case "$words[1]" in
       {-j,--json}'[Produce output in the JSON format.]' \
       {-f,--full}'[Display additional information about virtual environments..]'
   ;;
+
+#  backup )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  backup-list )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  backup-delete )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  restore )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  capture )
+    _arguments \
+      :guest:_guests \
+      '--file[Path where to save the screenshot to]'
+  ;;
+
+#  clone )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  console )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  create )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  delete )
+    _arguments \
+      :guest:_guests \
+      '--force'
+  ;;
+
+  installtools )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  enter )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  exec )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  migrate )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  pause )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  register )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  reset )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  resume )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  restart )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  start )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  status )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  change-sid )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  stop )
+    _arguments \
+      :guest:_guests \
+      '--kill' \
+      '--noforce'
+  ;;
+
+  snapshot )
+    _arguments \
+      :guest:_guests \
+      {-n,--name}'[name of the snapshot]'
+  ;;
+
+#  snapshot-delete )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  snapshot-list )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  snapshot-switch )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  suspend )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  unregister )
+    _arguments \
+      :guest:_guests
+  ;;
+
+  reset-uptime )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  mount )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+  umount )
+    _arguments \
+      :guest:_guests
+  ;;
+
+#  move )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  problem-report )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  statistics )
+#    _arguments \
+#      :guest:_guests
+#  ;;
+
+#  set )
+#    _arguments \
+#      :guest:_guests
+#  ;;
 esac
