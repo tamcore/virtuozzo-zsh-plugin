@@ -59,6 +59,24 @@ _templates() {
   done <<< "$( prlctl list -t --no-header -o name 2>/dev/null )"
 }
 
+_distribution_list()
+{
+  while read -r distribution
+  do
+
+    _wanted 'distribution' expl 'distribution' compadd $distribution
+  done <<< "$( prlctl create whocares -d list | grep -Ev 'The following values are allowed|Experimental support' | tr -cs 'A-Za-z0-9._-' '[\n*]'  )"
+}
+
+_ostype_list()
+{
+  while read -r ostype
+  do
+
+    _wanted 'ostype' expl 'ostype' compadd $ostype
+  done <<< "$( prlctl create whocares -o list | grep -Ev 'The following values are allowed|Experimental support' | tr -cs 'A-Za-z0-9._-' '[\n*]'  )"
+}
+
 _arguments '*:: :->subcmds' && return 0
 
 if (( CURRENT == 1 )); then
