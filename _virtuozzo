@@ -51,6 +51,13 @@ _guests() {
   done <<< "$( prlctl list --all --no-header -o name 2>/dev/null )"
 }
 
+_templates() {
+  while read -r template
+  do
+    _wanted 'template' expl 'template' compadd $template
+  done <<< "$( prlctl list -t --no-header -o name 2>/dev/null )"
+}
+
 _arguments '*:: :->subcmds' && return 0
 
 if (( CURRENT == 1 )); then
