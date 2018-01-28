@@ -283,8 +283,69 @@ case "$words[1]" in
       '--loop:[Print statistics every second until the program is terminated.]'
   ;;
 
-#  set )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  set )
+    _arguments \
+      :guest:_guests \
+        '--cpus[]' \
+        '--cpu-sockets[]' \
+        '--memsize[]' \
+        '--videosize[]' \
+        '--3d-accelerate[]:type:(off highest dx9)' \
+        '--vertical-sync[]:type:(on off)' \
+        '--cpuunits[]' \
+        '--cpulimit[]' \
+        '--cpumask[]' \
+        '--nodemask[]' \
+        '--cpu-hotplug[]:type:(on off)' \
+        '--ioprio[]' \
+        '--iolimit[]' \
+        '--iopslimit[]' \
+        '--mem-hotplug[]:type:(on off)' \
+        '--memguarantee[auto or value]' \
+        '--description[]' \
+        '--autostart[]:type:(on off auto)' \
+        '--autostart-delay[]' \
+        '--autostop[]:type:(stop suspend)' \
+        '--autocompact[]:type:(on off)' \
+        '--tools-autoupdate[]:type:(on off)' \
+        '--on-crash[]:type:(pause restart restart:no-report)' \
+        '--vnc-mode[]:type:(on manual off)' \
+        '--vnc-port[]' \
+        '--vnc-passwd[]' \
+        '--vnc-vncnopasswd[]' \
+        '--vnc-address[]' \
+        '--name[]' \
+        '--rename-ext-disks[]' \
+        '--userpasswd[]' \
+        '--host-admin[]' \
+        '--netfilter[]:type:(disabled stateless stateful full)' \
+        '--swappages[]' \
+        '--swap[]' \
+        '--quotaugidlimit[]' \
+        '--device-add[]:type:(hdd cdrom net fdd serial usb)' \
+        '--device-del[]' \
+        '--destroy-image[]' \
+        '--destroy-image-force[]' \
+        '--detach-only[]' \
+        '--device-set[]' \
+        '--device-connect[]' \
+        '--device-disconnect[]' \
+        '--device-bootorder[]' \
+        '--offline-management[]:type:(on off)' \
+        '--hostname[]' \
+        '--nameserver[]' \
+        '--searchdomain[]' \
+        '--rate[]' \
+        '--ratebound[]:type:(yes no)' \
+        '--applyconfig[]' \
+        '--nested-virt[]:type:(on off)' \
+        '--efi-boot[]:type:(on off)' \
+        '--select-boot-device[]:type:(on off)' \
+        '--external-boot-device[]' \
+        '--ha-enable[]:type:(yes no)' \
+        '--ha-prio[]' \
+        '--template[]:type:(yes no)' \
+        '--backup-add[]' \
+        '--backup-del[]'
+  ;;
 esac
