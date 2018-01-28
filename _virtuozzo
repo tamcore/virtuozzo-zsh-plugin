@@ -10,6 +10,7 @@ _1st_arguments=(
   'backup-delete:Delete the backup for specified virtual environment.'
   'restore:Restore the specified virtual environment.'
   'capture:Take a screenshot of a current virtual environment console in PNG format.'
+  'screenshot:Take a screenshot of a current virtual environment console in PNG format.'
   'clone:Make a copy of a virtual environment'
   'console:Attach to the Containers console.'
   'create:Create a virtual environment'
@@ -103,13 +104,24 @@ case "$words[1]" in
   capture )
     _arguments \
       :guest:_guests \
-      '--file[Path where to save the screenshot to]'
+      '--file[Path where to save the screenshot to]:dir:_directories'
   ;;
 
-#  clone )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  screenshot )
+    _arguments \
+      :guest:_guests \
+      '--file[Path where to save the screenshot to]:dir:_directories'
+  ;;
+
+  clone )
+    _arguments \
+      :guest:_guests \
+      {-n,--name}'[name of the clone]' \
+      '--template[create a template of a virtual environment.]' \
+      '--dst[specify the path to the directory where the directory with files of the cloned virtual environment will be stored.]' \
+      '--changesid[option to assign the clone a new Windows security identifier (SID)]' \
+      '--detach-external-hdd[specify whether to keep or remove hard disks located outside of the original virtual environment.]'
+  ;;
 
   console )
     _arguments \
@@ -125,6 +137,11 @@ case "$words[1]" in
     _arguments \
       :guest:_guests \
       '--force'
+  ;;
+
+  destroy )
+    _arguments \
+      :guest:_guests
   ;;
 
   installtools )
@@ -177,15 +194,15 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  status )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  status )
+    _arguments \
+      :guest:_guests
+  ;;
 
-#  change-sid )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  change-sid )
+    _arguments \
+      :guest:_guests
+  ;;
 
   stop )
     _arguments \
@@ -240,20 +257,25 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  move )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  move )
+    _arguments \
+      :guest:_guests \
+      '--dst[destination]:dir:_directories'
+  ;;
 
-#  problem-report )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  problem-report )
+    _arguments \
+      :guest:_guests \
+      {-d,--dump,-s,--send}'[dump output to stdout (-s) or send to Virtuozzo Development Team (-s)]' \
+      '--proxy[proxy to use]' \
+      '--no-proxy:dont use proxy'
+  ;;
 
-#  statistics )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  statistics )
+    _arguments \
+      :guest:_guests \
+      '--loop:Print statistics every second until the program is terminated.'
+  ;;
 
 #  set )
 #    _arguments \
