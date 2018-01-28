@@ -1,0 +1,67 @@
+#compdef prlctl
+#
+# Virtuozzo 7 prlctl zsh completion
+# Based on https://docs.virtuozzo.com/master/index.html
+
+local -a _1st_arguments
+_1st_arguments=(
+  'backup'
+  'backup-list'
+  'backup-delete'
+  'restore'
+  'capture'
+  'clone'
+  'console'
+  'create'
+  'delete'
+  'installtools'
+  'enter'
+  'exec'
+  'list'
+  'migrate'
+  'pause'
+  'register'
+  'reset'
+  'resume'
+  'restart'
+  'start'
+  'status'
+  'change-sid'
+  'stop'
+  'snapshot'
+  'snapshot-delete'
+  'snapshot-list'
+  'snapshot-switch'
+  'suspend'
+  'unregister'
+  'reset-uptime'
+  'mount'
+  'umount'
+  'move'
+  'problem-report'
+  'statistics'
+  'set'
+)
+
+_arguments '*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+  _describe -t commands "prctl commands" _1st_arguments -V1
+  return
+fi
+
+case "$words[1]" in
+  list)
+    _arguments \
+      {-a,--all}'[List all, running, stopped, suspended, and paused virtual machines]' \
+      {-t,--template}'[List the available virtual machine templates]' \
+      '--no-header[Do not display column headers]' \
+      {-o,--output}'[Specify field(s) to output]:type:(uuid envid status name dist owner system-flags description numproc ip ip_configured hostname netif mac features location iolimit netdev type ha_enable ha_prio)' \
+      {-s,--sort}'[Sort output in ascending order by specified field]:type:(uuid envid status name dist owner system-flags description numproc ip ip_configured hostname netif mac features location iolimit netdev type ha_enable ha_prio)' \
+      {-i,--info}'[Display detailed information about a virtual machine]' \
+      '-L[List fields which can be used for both the output (-o, --output) and sort order (-s, --sort) options.]' \
+      '--vmtype[Display only virtual environments of the specified type.:type:(ct vm all)]' \
+      {-j,--json}'[Produce output in the JSON format.]' \
+      {-f,--full}'[Display additional information about virtual environments..]'
+  ;;
+esac
