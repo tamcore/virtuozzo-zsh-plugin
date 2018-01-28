@@ -154,10 +154,11 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  exec )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  exec )
+    _arguments \
+      :guest:_guests \
+      '--whithout-shell[run command directly without bash or cmd shell.]'
+  ;;
 
 #  migrate )
 #    _arguments \
@@ -169,10 +170,14 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  register )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  register )
+    _arguments \
+      '*:dir:_directories' \
+      '--preserve-uuid[virtual environment ID will not changed]' \
+      '--uuid=-[the provided UUID will be used for virtual environment ID,]' \
+      '--regenerate-src-uuid[virtual environment source ID will be regenerated (SMBIOS product id will be changed as well)]' \
+      '--force[all validation checks will be skipped]'
+  ;;
 
   reset )
     _arguments \
@@ -247,10 +252,11 @@ case "$words[1]" in
       :guest:_guests
   ;;
 
-#  mount )
-#    _arguments \
-#      :guest:_guests
-#  ;;
+  mount )
+    _arguments \
+      :guest:_guests \
+      '-o[read-only(ro) or read-write(rw, default)]:type:(ro rw)'
+  ;;
 
   umount )
     _arguments \
