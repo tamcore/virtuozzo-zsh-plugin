@@ -141,7 +141,7 @@ case "$words[1]" in
       '--detach-external-hdd[specify whether to keep or remove hard disks located outside of the original virtual environment.]'
   ;;
 
-  console )
+  console | destroy | installtools | enter | pause | reset | resume | restart | start | status | change-sid | suspend | unregister | reset-uptime | umount)
     _arguments \
       :guest:_guests
   ;;
@@ -165,21 +165,6 @@ case "$words[1]" in
       '--force'
   ;;
 
-  destroy )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  installtools )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  enter )
-    _arguments \
-      :guest:_guests
-  ;;
-
   exec )
     _arguments \
       :guest:_guests \
@@ -191,11 +176,6 @@ case "$words[1]" in
 #      :guest:_guests
 #  ;;
 
-  pause )
-    _arguments \
-      :guest:_guests
-  ;;
-
   register )
     _arguments \
       '*:dir:_directories' \
@@ -203,36 +183,6 @@ case "$words[1]" in
       '--uuid=-[the provided UUID will be used for virtual environment ID,]' \
       '--regenerate-src-uuid[virtual environment source ID will be regenerated (SMBIOS product id will be changed as well)]' \
       '--force[all validation checks will be skipped]'
-  ;;
-
-  reset )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  resume )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  restart )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  start )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  status )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  change-sid )
-    _arguments \
-      :guest:_guests
   ;;
 
   stop )
@@ -263,30 +213,10 @@ case "$words[1]" in
 #      :guest:_guests
 #  ;;
 
-  suspend )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  unregister )
-    _arguments \
-      :guest:_guests
-  ;;
-
-  reset-uptime )
-    _arguments \
-      :guest:_guests
-  ;;
-
   mount )
     _arguments \
       :guest:_guests \
       '-o[read-only(ro) or read-write(rw, default)]:type:(ro rw)'
-  ;;
-
-  umount )
-    _arguments \
-      :guest:_guests
   ;;
 
   move )
