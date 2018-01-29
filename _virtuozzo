@@ -242,66 +242,66 @@ case "$words[1]" in
   set )
     _arguments \
       :guest:_guests \
-        '--cpus[]' \
-        '--cpu-sockets[]' \
-        '--memsize[]' \
-        '--videosize[]' \
+        '--cpus[number of CPU cores per CPU socket]' \
+        '--cpu-sockets[number of CPU sockets]' \
+        '--memsize[amount of memory that the virtual environment can consume]' \
+        '--videosize[amount of memory for the virtual environment graphic card]' \
         '--3d-accelerate[]:type:(off highest dx9)' \
         '--vertical-sync[]:type:(on off)' \
-        '--cpuunits[]' \
-        '--cpulimit[]' \
-        '--cpumask[]' \
-        '--nodemask[]' \
+        '--cpuunits[CPU weight for the virtual environment]' \
+        '--cpulimit[CPU limit, in percent or megahertz (MHz)]' \
+        '--cpumask[CPUs on the physical server to use for executing the virtual environment process.]' \
+        '--nodemask[NUMA node on the physical server to use for executing the virtual environment process.]' \
         '--cpu-hotplug[]:type:(on off)' \
-        '--ioprio[]' \
-        '--iolimit[]' \
-        '--iopslimit[]' \
+        '--ioprio[I/O  priority. Higher is better. Default is priority of 4.]' \
+        '--iolimit[I/O limit]' \
+        '--iopslimit[Input/Output Operations Per Second limit]' \
         '--mem-hotplug[]:type:(on off)' \
         '--memguarantee[auto or value]' \
-        '--description[]' \
-        '--autostart[]:type:(on off auto)' \
-        '--autostart-delay[]' \
-        '--autostop[]:type:(stop suspend)' \
-        '--autocompact[]:type:(on off)' \
-        '--tools-autoupdate[]:type:(on off)' \
-        '--on-crash[]:type:(pause restart restart:no-report)' \
-        '--vnc-mode[]:type:(on manual off)' \
-        '--vnc-port[]' \
-        '--vnc-passwd[]' \
-        '--vnc-vncnopasswd[]' \
-        '--vnc-address[]' \
-        '--name[]' \
+        '--description[Set the VE description.]' \
+        '--autostart[virtual environment start-up option]:type:(on off auto)' \
+        '--autostart-delay[Delay some seconds at virtual environment autostart]' \
+        '--autostop[mode to set the virtual environment on the Virtuozzo Service shutdown]:type:(stop suspend)' \
+        '--autocompact[Turns on/off automatic virtual disk image compact]:type:(on off)' \
+        '--tools-autoupdate[automatic updating of Virtuozzo Guest Tools in the guest operating system]:type:(on off)' \
+        '--on-crash[what to do with the virtual environment if it crashes: pause or restart.]:type:(pause restart restart:no-report)' \
+        '--vnc-mode[Enables/disables access to the virtual environment via the VNC protocol]:type:(on manual off)' \
+        '--vnc-port[VNC port]' \
+        '--vnc-passwd[VNC password]' \
+        '--vnc-vncnopasswd[Do not require a password for VNC connections.]' \
+        '--vnc-address[VNC address]' \
+        '--name[Change the VE name.]' \
         '--rename-ext-disks[]' \
-        '--userpasswd[]' \
-        '--host-admin[]' \
-        '--netfilter[]:type:(disabled stateless stateful full)' \
-        '--swappages[]' \
-        '--swap[]' \
-        '--quotaugidlimit[]' \
-        '--device-add[]:type:(hdd cdrom net fdd serial usb)' \
-        '--device-del[]' \
-        '--destroy-image[]' \
-        '--destroy-image-force[]' \
-        '--detach-only[]' \
-        '--device-set[]' \
-        '--device-connect[]' \
-        '--device-disconnect[]' \
-        '--device-bootorder[]' \
-        '--image[]:file:_files' \
-        '--offline-management[]:type:(on off)' \
-        '--hostname[]' \
-        '--nameserver[]' \
-        '--searchdomain[]' \
-        '--rate[]' \
-        '--ratebound[]:type:(yes no)' \
-        '--applyconfig[]' \
-        '--nested-virt[]:type:(on off)' \
-        '--efi-boot[]:type:(on off)' \
-        '--select-boot-device[]:type:(on off)' \
-        '--external-boot-device[]' \
-        '--ha-enable[]:type:(yes no)' \
-        '--ha-prio[]' \
-        '--template[]:type:(yes no)' \
+        '--userpasswd[password for the specified user in the virtual environment]' \
+        '--host-admin[a host OS administrators name if an administrators password is required to change the password for the specified user in the virtual environment.]' \
+        '--netfilter[Restrict access to iptable modules inside the Container]:type:(disabled stateless stateful full)' \
+        '--swappages[limits the amount of swap space that can be allocated to processes running in a Container]' \
+        '--swap[limits the amount of swap space that can be allocated to processes running in a Container.]' \
+        '--quotaugidlimit[maximum  number of user/group IDs in a Container for which disk quota is calculated]' \
+        '--device-add[Adding virtual devices to VE]:type:(hdd cdrom net fdd serial usb)' \
+        '--device-del[Removing virtual devices from VE]' \
+        '--destroy-image[the virtual HDD image is removed from the server]' \
+        '--destroy-image-force[the virtual HDD image is removed from the server and all snapshots]' \
+        '--detach-only[if the device is a virtual hard disk drive, the disk image is preserved]' \
+        '--device-set[Used to configure various parameters of the specified virtual device.]' \
+        '--device-connect[Used to connect the specified device to a running VE.]' \
+        '--device-disconnect[Disconnect the specified device.]' \
+        '--device-bootorder[Used to specify the order of boot devices for a virtual environment]' \
+        '--image[image name]:file:_files' \
+        '--offline-management[Enable/disable the offline management feature]:type:(on off)' \
+        '--hostname[Sets the hostname for the virtual environment]' \
+        '--nameserver[Sets the nameserver for the virtual environment]' \
+        '--searchdomain[Sets the searchdomain for the virtual environment]' \
+        '--rate[Specifies the bandwidth guarantee of the virtual environment for the specified network class.]' \
+        '--ratebound[If set to "yes", the bandwidth guarantee is also the limit for the virtual environment]:type:(yes no)' \
+        '--applyconfig[Apply the resource parameter values from the specified VE configuration file to the virtual environment]' \
+        '--nested-virt[Disable or enable nested virtualization.]:type:(on off)' \
+        '--efi-boot[EFI boot]:type:(on off)' \
+        '--select-boot-device[Enable or disable the selection of a boot device at the virtual environment startup]:type:(on off)' \
+        '--external-boot-device[Set an external device from which to boot the virtual environment]' \
+        '--ha-enable[Adds the virtual environment to (yes) or removes it (no) from the High Availability Cluster]:type:(yes no)' \
+        '--ha-prio[Sets the virtual environment priority in the High Availability Cluster. Higher is better]' \
+        '--template[Convert the virtual environment to template and vice versa]:type:(yes no)' \
         '--backup-add[]' \
         '--backup-del[]'
   ;;
